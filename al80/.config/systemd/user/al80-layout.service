@@ -1,0 +1,14 @@
+[Unit]
+Description=Distribución de teclado según el YUNZII AL80 (us intl con él, es sin él)
+After=plasma-kwin_wayland.service
+PartOf=graphical-session.target
+
+[Service]
+# Solo en Plasma: en Hyprland cada teclado ya tiene su distribución (~/.config/hypr/config/inputs.lua)
+ExecCondition=/usr/bin/sh -c '[ "$$XDG_CURRENT_DESKTOP" = KDE ]'
+ExecStart=%h/.local/bin/al80-layout
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

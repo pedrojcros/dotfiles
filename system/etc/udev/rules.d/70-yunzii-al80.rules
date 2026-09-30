@@ -1,0 +1,5 @@
+# YUNZII AL80 (USB 28e9:30af)
+# Da acceso a la interfaz raw HID de VIA (interfaz USB 01, usage page 0xFF60) al usuario
+# con la sesión activa, para poder configurarlo desde https://usevia.app
+# Va antes de 73-seat-late.rules para que el permiso "uaccess" se aplique al enchufar el cable.
+SUBSYSTEM=="hidraw", ENV{ID_VENDOR_ID}=="28e9", ENV{ID_MODEL_ID}=="30af", ENV{ID_USB_INTERFACE_NUM}=="01", TAG+="uaccess"
