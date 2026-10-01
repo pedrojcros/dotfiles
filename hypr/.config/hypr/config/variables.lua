@@ -15,4 +15,4 @@ MONITOR3 = ""
 PRIMARY_MONITOR = MONITOR1
 
 -- Workspaces
-NUM_WORKSPACES = 6 -- Escritorios con atajo Super + número (máx. 10)
+NUM_WORKSPACES = 7 -- Escritorios con atajo Super + número (máx. 10)
