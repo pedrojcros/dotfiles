@@ -16,8 +16,8 @@
 |---|---|
 | Super + E | Explorador de archivos |
 | Super + W | Navegador |
-| Super + T | Editor de texto |
-| Super + C | Calculadora |
+| Super + T | Editor (VS Code) |
+| Super + C | Calculadora (Qalculate) |
 | Ctrl + Shift + Esc | Monitor del sistema (btop) |
 
 ## Ventanas
