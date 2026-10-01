@@ -2,7 +2,7 @@
 # version-escritorio: cambia entre las versiones del escritorio (ramas del repositorio dotfiles).
 #   version-escritorio            -> lista las versiones y marca la actual
 #   version-escritorio <versión>  -> cambia a esa versión y la aplica al momento
-# Cada rama tiene en la raíz un version.env con el fondo de pantalla de esa versión.
+# Cada versión declara su fondo y sus widgets en noctalia/.config/noctalia/version.toml.
 #
 # Todo va dentro de main(): bash lee la función entera antes de ejecutarla, así que no le afecta
 # que este mismo archivo cambie al hacer git switch.
@@ -14,12 +14,14 @@ PACKAGES=(hypr noctalia kitty uwsm qt6ct menus swash al80 energia bin)
 
 SETTINGS="${XDG_STATE_HOME:-$HOME/.local/state}/noctalia/settings.toml"
 
-# Borra de settings.toml todas las tablas [desktop_widgets...] (con copia en settings.toml.bak)
-quitar_widgets_guardados() {
+# Borra de settings.toml (lo que Noctalia guarda desde su interfaz, que manda sobre la configuración)
+# las tablas [desktop_widgets...] y [wallpaper...], para que valgan las de la versión nueva.
+# Deja una copia en settings.toml.bak.
+quitar_ajustes_guardados() {
     [[ -f "$SETTINGS" ]] || return 0
     cp "$SETTINGS" "$SETTINGS.bak"
     awk '
-        /^[[:space:]]*\[/ { h = $0; sub(/^[[:space:]]*\[+/, "", h); skip = (h ~ /^desktop_widgets([].]|$)/) }
+        /^[[:space:]]*\[/ { h = $0; sub(/^[[:space:]]*\[+/, "", h); skip = (h ~ /^(desktop_widgets|wallpaper)([].]|$)/) }
         !skip
     ' "$SETTINGS.bak" > "$SETTINGS"
 }
@@ -54,18 +56,9 @@ main() {
 
     hyprctl reload >/dev/null
 
-    if [[ -f version.env ]]; then
-        # shellcheck source=/dev/null
-        source version.env
-        if [[ -n "${WALLPAPER:-}" ]]; then
-            noctalia msg wallpaper-set "$WALLPAPER" >/dev/null
-        fi
-    fi
-
-    # Noctalia guarda los widgets del escritorio en su settings.toml (p. ej. al fijar el fondo), y ese
-    # archivo manda sobre la configuración: se quitan para que valgan los de la versión nueva.
-    # (Si colocas widgets con el editor y quieres conservarlos, pásalos antes al version.toml de la rama.)
-    quitar_widgets_guardados
+    # Si colocaste widgets con el editor o elegiste otro fondo y quieres conservarlos, pásalos antes
+    # al version.toml de la rama: aquí se borran para que manden los de la versión.
+    quitar_ajustes_guardados
     noctalia msg config-reload >/dev/null
 
     echo "Versión '$1' aplicada."
