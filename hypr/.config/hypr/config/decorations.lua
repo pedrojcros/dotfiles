@@ -2,17 +2,17 @@
 
 hl.config({
     general = {
-        gaps_in = 3,
-        gaps_out = 8,
+        gaps_in = 10,
+        gaps_out = 22,
         border_size = 2,
         extend_border_grab_area = 10,
         resize_on_border = true,
         col = {
             active_border = {
-                colors = { CACHYLGREEN, CACHYDGREEN },
+                colors = { "rgba(b4a5ffcc)", "rgba(ffa5cccc)" }, -- lila -> rosa suave (paleta Isla)
                 angle = 45,
             },
-            inactive_border = CACHYGRAY,
+            inactive_border = "rgba(3a385888)",
         },
     },
     group = {
@@ -33,9 +33,15 @@ hl.config({
     },
     decoration = {
         dim_special = 0.3,
-        rounding = 10,
+        rounding = 20,
+        shadow = {                     -- sombra suave: las ventanas parecen flotar
+            enabled = true,
+            range = 26,
+            render_power = 3,
+            color = "rgba(05050c88)",
+        },
         active_opacity = 0.95,
-        inactive_opacity = 0.85,
+        inactive_opacity = 0.88,
         fullscreen_opacity = 1,
         blur = {
             size = 5,

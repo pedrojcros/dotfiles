@@ -1,0 +1,215 @@
+# Versión "isla" (inspirada en "impasto", "ChillPill-Shell" y "New to Linux and ricing" de Niri).
+# Minimalista y "blandita": barra tipo píldora flotando, mucho fondo a la vista, reproductor a la
+# izquierda (como en Niri) y una columna de widgets a la derecha (como en impasto).
+# Noctalia carga todos los *.toml de esta carpeta por orden alfabético: este archivo se aplica
+# después de config.toml y sobrescribe lo que repite.
+# Para mover/redimensionar widgets a mano: noctalia msg desktop-widgets-edit (Esc para salir).
+
+[theme]
+mode           = "dark"
+source         = "custom"
+custom_palette = "Isla"           # palettes/Isla.json
+
+[shell]
+font_family = "Noto Sans"
+
+[location]
+auto_locate = false
+address     = "San Vicente del Raspeig, Alicante, España"
+
+[weather]
+enabled = true
+unit    = "metric"
+
+[wallpaper]
+fill_mode = "crop"
+
+    [wallpaper.default]
+    path = "/home/pedro/dev/projects/personal/dotfiles/assets/isla/fondo-provisional.jpg"
+
+# Barra tipo píldora: separada del borde (margin_edge) y estrecha (margin_ends a cada lado)
+[bar.default]
+position             = "top"
+thickness            = 38
+margin_edge          = 10
+margin_ends          = 860        # Samsung: 2560 - 2*860 = 840 px de ancho
+concave_edge_corners = false
+radius               = 19
+radius_top_left      = 19
+radius_top_right     = 19
+radius_bottom_left   = 19
+radius_bottom_right  = 19
+background_opacity   = 0.9
+capsule              = true
+capsule_fill         = "surface_variant"
+start                = [ "workspaces" ]
+center               = [ "clock" ]
+end                  = [ "media", "network", "volume", "battery", "session" ]
+
+    [bar.default.monitor.portatil]
+    match       = "eDP-1"
+    margin_ends = 540             # portátil: 1920 - 2*540 = 840 px de ancho
+
+[widget.clock]
+format = "{:%H:%M · %a %d}"
+
+# ---------------------------------------------------------------------------------------------
+# Widgets del escritorio. cx/cy = centro del widget en píxeles de esa pantalla.
+# HDMI-A-1 = Samsung (2560x1440). eDP-1 = portátil (1920x1080).
+# ---------------------------------------------------------------------------------------------
+[desktop_widgets]
+enabled        = true
+schema_version = 2
+widget_order   = [
+    "musica_s", "visual_s", "reloj_s", "tiempo_s", "calendario_s", "sistema_s",
+    "musica_l", "reloj_l", "tiempo_l", "calendario_l",
+]
+
+# --- Samsung: reproductor a la izquierda (Niri) -----------------------------------------------
+[desktop_widgets.widget.musica_s]
+type = "media_player"
+output = "HDMI-A-1"
+cx = 240.0
+cy = 520.0
+box_width = 340.0
+box_height = 460.0
+    [desktop_widgets.widget.musica_s.settings]
+    layout = "vertical"
+    hide_when_no_media = false
+    color = "on_surface"
+    background_color = "surface"
+    background_opacity = 0.72
+    background_radius = 22.0
+    background_padding = 16.0
+
+[desktop_widgets.widget.visual_s]
+type = "fancy_audio_visualizer"
+output = "HDMI-A-1"
+cx = 240.0
+cy = 930.0
+box_width = 300.0
+box_height = 300.0
+    [desktop_widgets.widget.visual_s.settings]
+    visualization_mode = "bars_rings"
+    fade_when_idle = true
+    primary_color = "primary"
+    secondary_color = "tertiary"
+
+# --- Samsung: columna derecha (impasto) ------------------------------------------------------
+[desktop_widgets.widget.reloj_s]
+type = "clock"
+output = "HDMI-A-1"
+cx = 2330.0
+cy = 210.0
+box_width = 380.0
+box_height = 230.0
+    [desktop_widgets.widget.reloj_s.settings]
+    clock_style = "analog"
+    color = "primary"
+    background_color = "surface"
+    background_opacity = 0.72
+    background_radius = 22.0
+
+[desktop_widgets.widget.tiempo_s]
+type = "weather"
+output = "HDMI-A-1"
+cx = 2330.0
+cy = 465.0
+box_width = 380.0
+box_height = 210.0
+    [desktop_widgets.widget.tiempo_s.settings]
+    show_forecast = true
+    forecast_days = 3
+    color = "on_surface"
+    background_color = "surface"
+    background_opacity = 0.72
+    background_radius = 22.0
+
+[desktop_widgets.widget.calendario_s]
+type = "calendar"
+output = "HDMI-A-1"
+cx = 2330.0
+cy = 745.0
+box_width = 380.0
+box_height = 300.0
+    [desktop_widgets.widget.calendario_s.settings]
+    show_events = false
+    background_color = "surface"
+    background_opacity = 0.72
+    background_radius = 22.0
+
+[desktop_widgets.widget.sistema_s]
+type = "sysmon"
+output = "HDMI-A-1"
+cx = 2330.0
+cy = 1000.0
+box_width = 380.0
+box_height = 160.0
+    [desktop_widgets.widget.sistema_s.settings]
+    display = "graph"
+    stat = "cpu_usage"
+    stat2 = "ram_pct"
+    color = "primary"
+    color2 = "tertiary"
+    background_color = "surface"
+    background_opacity = 0.72
+    background_radius = 22.0
+
+# --- Portátil --------------------------------------------------------------------------------
+[desktop_widgets.widget.musica_l]
+type = "media_player"
+output = "eDP-1"
+cx = 200.0
+cy = 420.0
+box_width = 300.0
+box_height = 400.0
+    [desktop_widgets.widget.musica_l.settings]
+    layout = "vertical"
+    hide_when_no_media = true
+    color = "on_surface"
+    background_color = "surface"
+    background_opacity = 0.72
+    background_radius = 22.0
+    background_padding = 14.0
+
+[desktop_widgets.widget.reloj_l]
+type = "clock"
+output = "eDP-1"
+cx = 1740.0
+cy = 185.0
+box_width = 300.0
+box_height = 190.0
+    [desktop_widgets.widget.reloj_l.settings]
+    clock_style = "analog"
+    color = "primary"
+    background_color = "surface"
+    background_opacity = 0.72
+    background_radius = 22.0
+
+[desktop_widgets.widget.tiempo_l]
+type = "weather"
+output = "eDP-1"
+cx = 1740.0
+cy = 400.0
+box_width = 300.0
+box_height = 200.0
+    [desktop_widgets.widget.tiempo_l.settings]
+    show_forecast = true
+    forecast_days = 2
+    color = "on_surface"
+    background_color = "surface"
+    background_opacity = 0.72
+    background_radius = 22.0
+
+[desktop_widgets.widget.calendario_l]
+type = "calendar"
+output = "eDP-1"
+cx = 1740.0
+cy = 670.0
+box_width = 300.0
+box_height = 290.0
+    [desktop_widgets.widget.calendario_l.settings]
+    show_events = false
+    background_color = "surface"
+    background_opacity = 0.72
+    background_radius = 22.0
