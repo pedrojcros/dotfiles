@@ -42,15 +42,15 @@ Si cambias alguno allí, actualiza también esta chuleta.
 
 ## Escritorios y pantallas
 
-Escritorios 1-3 en el Samsung, 4-6 en el portátil (sin el Samsung, todos en el portátil).
+Escritorios 1-4 en el Samsung, 5-7 en el portátil (sin el Samsung, todos en el portátil).
 
 | Atajo | Qué hace |
 |---|---|
-| Super + 1…6 | Ir al escritorio 1…6 |
-| Super + Shift + 1…6 | Mover la ventana a ese escritorio (y vas con ella) |
-| Super + Shift + Alt + 1…6 | Mandar la ventana a ese escritorio (tú te quedas) |
+| Super + 1…7 | Ir al escritorio 1…7 |
+| Super + Shift + 1…7 | Mover la ventana a ese escritorio (y vas con ella) |
+| Super + Shift + Alt + 1…7 | Mandar la ventana a ese escritorio (tú te quedas) |
 | Super + Ctrl + ← / → | Escritorio anterior / siguiente de esta pantalla |
-| Super + Ctrl + ↓ | Ir a un escritorio vacío |
+| Super + Ctrl + ↓ | Ir a un escritorio vacío (para "ver el escritorio") |
 | Super + Ctrl + Shift + ← / → | Llevar la ventana al escritorio anterior / siguiente |
 | Super + rueda del ratón | Cambiar de escritorio |
 | Super + Shift + rueda | Mover la ventana a la otra pantalla |
