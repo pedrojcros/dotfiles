@@ -1,112 +1,63 @@
-# Atajos de teclado
+# Atajos — Hyprland + Noctalia
 
-**Super** es la tecla Windows. Los atajos de Hyprland están en
-`~/.config/hypr/config/binds.lua` (en el repo: `hypr/.config/hypr/config/binds.lua`).
-Si cambias alguno allí, actualiza también esta chuleta.
+**Super** = tecla Windows. Los atajos se definen en `hypr/.config/hypr/config/binds.lua`.
 
-## Lo básico
-
+## Básico
 | Atajo | Qué hace |
 |---|---|
-| Super + Espacio | Lanzador de aplicaciones (escribe para buscar) |
+| Super + Espacio | Lanzador de aplicaciones |
 | Super + Enter | Terminal (kitty) |
-| Super + Q | Cerrar la ventana |
-| Super + Alt + C | Menú de sesión: bloquear, cerrar sesión, suspender, reiniciar, apagar |
-| Super + L | Bloquear la pantalla |
+| Super + Q | Cerrar ventana |
+| Super + L | Bloquear pantalla |
+| Super + Alt + C | Menú de sesión (salir, suspender, reiniciar, apagar) |
 
-## Abrir aplicaciones
-
+## Aplicaciones
 | Atajo | Qué hace |
 |---|---|
-| Super + E | Explorador de archivos (Dolphin) |
-| Super + W | Navegador (Brave) |
-| Super + T | Editor de texto (Kate) |
-| Super + C | Calculadora (KCalc) |
-| Ctrl + Shift + Esc | Monitor del sistema (btop en una terminal) |
+| Super + E | Explorador de archivos |
+| Super + W | Navegador |
+| Super + T | Editor de texto |
+| Super + C | Calculadora |
+| Ctrl + Shift + Esc | Monitor del sistema (btop) |
 
 ## Ventanas
+| Atajo | Qué hace |
+|---|---|
+| Super + ← → ↑ ↓ | Ir a la ventana de al lado (salta de pantalla en el borde) |
+| Super + Shift + ← → ↑ ↓ | Mover la ventana |
+| Super + F / Super + D | Pantalla completa / maximizar |
+| Super + Alt + Espacio | Flotante ↔ mosaico |
+| Super + J | Cambiar la división (lado a lado ↔ arriba/abajo) |
+| Super + arrastrar (izq. / der.) | Mover / redimensionar con el ratón |
+| Alt + Tab · Super + Tab | Siguiente ventana · selector de ventanas |
+| Super + Esc | Forzar cierre (luego clic en la ventana) |
+
+## Escritorios
+1-4 en el Samsung, 5-7 en el portátil.
 
 | Atajo | Qué hace |
 |---|---|
-| Super + ← → ↑ ↓ | Moverte a la ventana de al lado (en el borde salta a la otra pantalla) |
-| Super + Shift + ← → ↑ ↓ | Mover la ventana en esa dirección (también a la otra pantalla) |
-| Super + F | Pantalla completa |
-| Super + D | Maximizar (ocupa el escritorio pero se sigue viendo la barra) |
-| Super + Alt + Espacio | Ventana flotante ↔ en mosaico |
-| Super + J | Cambiar la división de dos ventanas (lado a lado ↔ una encima de otra) |
-| Super + arrastrar con botón izquierdo | Mover una ventana con el ratón |
-| Super + arrastrar con botón derecho | Redimensionar una ventana con el ratón |
-| Alt + Tab | Pasar a la siguiente ventana |
-| Super + Tab | Selector de ventanas de Noctalia |
-| Super + Esc | Forzar el cierre de una ventana colgada (después haz clic en ella) |
+| Super + 1…7 | Ir al escritorio |
+| Super + Shift + 1…7 | Llevar la ventana (y vas con ella) |
+| Super + Shift + Alt + 1…7 | Mandar la ventana (te quedas) |
+| Super + Ctrl + ← / → | Escritorio anterior / siguiente |
+| Super + Ctrl + ↓ | Escritorio vacío ("ver el escritorio") |
+| Super + S · Super + Shift + S | Escritorio especial: mostrar · mandar ventana |
 
-## Escritorios y pantallas
-
-Escritorios 1-4 en el Samsung, 5-7 en el portátil (sin el Samsung, todos en el portátil).
-
+## Noctalia
 | Atajo | Qué hace |
 |---|---|
-| Super + 1…7 | Ir al escritorio 1…7 |
-| Super + Shift + 1…7 | Mover la ventana a ese escritorio (y vas con ella) |
-| Super + Shift + Alt + 1…7 | Mandar la ventana a ese escritorio (tú te quedas) |
-| Super + Ctrl + ← / → | Escritorio anterior / siguiente de esta pantalla |
-| Super + Ctrl + ↓ | Ir a un escritorio vacío (para "ver el escritorio") |
-| Super + Ctrl + Shift + ← / → | Llevar la ventana al escritorio anterior / siguiente |
-| Super + rueda del ratón | Cambiar de escritorio |
-| Super + Shift + rueda | Mover la ventana a la otra pantalla |
-| Super + S | Mostrar / ocultar el "escritorio especial" (cajón de ventanas a mano) |
-| Super + Shift + S | Mandar la ventana al escritorio especial |
-
-## Noctalia (barra y paneles)
-
-| Atajo | Qué hace |
-|---|---|
-| Super + X | Centro de control: wifi, Bluetooth, volumen, brillo... |
+| Super + X | Centro de control (wifi, Bluetooth, volumen, cafeína…) |
 | Super + A | Notificaciones |
-| Super + V | Historial del portapapeles |
-| Super + Z | Ajustes de Noctalia |
-| Super + Shift + W | Elegir fondo de pantalla |
-| Super + . (punto) | Selector de emojis |
+| Super + V | Portapapeles |
+| Super + Z | Ajustes |
+| Super + Shift + W | Fondos de pantalla |
+| Super + . | Emojis |
+| Impr Pant · Super + Impr Pant | Captura de zona · de pantalla |
+| Super + P | Cuentagotas de color |
 
-## Capturas y utilidades
+## Touchpad
+4 dedos ← → cambiar de escritorio · 3 dedos ↓ cerrar · ↑ pantalla completa · ← flotante.
 
-| Atajo | Qué hace |
-|---|---|
-| Impr Pant | Captura de una zona (se abre el editor swash) |
-| Super + Impr Pant | Captura de toda la pantalla |
-| Super + P | Cuentagotas: copia el color que haya bajo el cursor |
-| Super + + / − | Zoom de la pantalla (lupa) |
-
-## Multimedia (teclas del AL80 y del portátil)
-
-En el AL80 van con Fn + F1…F12, y la rueda sube/baja el volumen.
-
-| Tecla | Qué hace |
-|---|---|
-| Subir / bajar volumen, silenciar | Volumen (con aviso en pantalla) |
-| Play / Anterior / Siguiente | Controla la música o el vídeo que suene |
-| Brillo + / − | Brillo de la pantalla del portátil |
-
-## Gestos en el touchpad
-
-| Gesto | Qué hace |
-|---|---|
-| 4 dedos ← / → | Cambiar de escritorio |
-| 3 dedos ↓ | Cerrar la ventana |
-| 3 dedos ↑ | Pantalla completa |
-| 3 dedos ← | Ventana flotante |
-
-## Escribir (AL80 en inglés internacional con AltGr)
-
-AltGr es la tecla justo a la derecha del espacio. El teclado del portátil sigue en español.
-
-| Quiero | Pulso |
-|---|---|
-| á é í ó ú | AltGr + vocal |
-| Á É Í Ó Ú | AltGr + Shift + vocal |
-| ñ / Ñ | AltGr + n / AltGr + Shift + n |
-| ü | AltGr + y |
-| ¿ | AltGr + / |
-| ¡ | AltGr + Shift + 1 |
-| € | AltGr + 5 |
-| Inicio / Fin | Alt izquierdo + ← / → (keyd) |
+## Cambiar de versión
+`version-escritorio` (lista) · `version-escritorio <versión>` (aplicar)
