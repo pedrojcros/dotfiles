@@ -1,0 +1,14 @@
+# Noctalia Greeter: valores por defecto (los fija el administrador)
+[session]
+default = "Hyprland (uwsm-managed)"
+
+[user]
+default = "pedro"
+
+# Igual que la pantalla anterior: distribución española (para escribir la contraseña)
+[keyboard]
+layout = "es"
+
+[cursor]
+theme = "oreo_spark_purple_cursors"
+size = 32

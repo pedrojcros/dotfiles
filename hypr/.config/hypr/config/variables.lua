@@ -3,8 +3,8 @@
 TERMINAL     = "kitty"
 FILE_MANAGER = "dolphin"
 BROWSER      = "brave"
-EDITOR       = "kate"
-CALCULATOR   = "kcalc"
+EDITOR       = "code --new-window"
+CALCULATOR   = "qalculate-qt"
 
 -- Monitors
 -- El Samsung se identifica por su modelo ("desc:"), así funciona igual aunque cambie el puerto
