@@ -43,9 +43,32 @@ sudo install -Dm644 system/etc/udev/rules.d/70-yunzii-al80.rules /etc/udev/rules
 
 ## Versiones
 
-Cada variante del escritorio vive en su propia rama. `main` es la configuración que uso a diario.
+Cada variante del escritorio vive en su propia rama. `main` es la configuración de partida.
+
+| Rama    | Idea |
+|---------|------|
+| `main`  | Base de CachyOS adaptada, sin widgets |
+| `marco` | Barra arriba + columna izquierda con marco y pico (Noctalia "Sidebar Frame"), morado de Cinnamon |
+| `hud`   | Paneles tipo HUD flotando (Ghost in the Shell / Nyx), cian/violeta, fuente monoespaciada, stickers |
+| `isla`  | Minimalista: barra píldora flotante, reproductor a la izquierda (Niri), columna a la derecha (impasto) |
 
 ```sh
-git switch nombre-de-la-rama   # cambiar de versión
-hyprctl reload                 # aplicar (Noctalia recarga sola su config)
+version-escritorio          # lista las versiones (la actual con *)
+version-escritorio marco    # cambia a "marco" y la aplica al momento
 ```
+
+Lo propio de cada versión está en:
+
+- `noctalia/.config/noctalia/version.toml`: tema, fondo, barra y widgets del escritorio.
+  Noctalia carga todos los `*.toml` por orden alfabético, así que sobrescribe a `config.toml`.
+- `noctalia/.config/noctalia/palettes/<Nombre>.json`: la paleta de colores.
+- `hypr/.config/hypr/config/decorations.lua` (bordes, huecos, redondeo) y, en `marco`,
+  `monitors.lua` (espacio reservado para la columna).
+- `assets/<versión>/`: fondo provisional e imágenes (marco, stickers).
+
+Para cambiar algo de una versión: ponte en ella (`version-escritorio hud`), edita, prueba y haz
+commit. `version-escritorio` no te deja cambiar con cambios sin guardar.
+
+Si colocas widgets con el editor de Noctalia (`noctalia msg desktop-widgets-edit`) o eliges un fondo
+desde su panel, eso se guarda en `~/.local/state/noctalia/settings.toml` y **se pierde al cambiar de
+versión**. Para conservarlo, pásalo al `version.toml` de la rama (Ajustes de Noctalia → Export Config).
