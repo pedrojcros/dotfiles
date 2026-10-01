@@ -1,0 +1,297 @@
+# Versión "hud" (inspirada en "Ghost in the Shell for HyDE" y en "Nyx").
+# Paneles de datos flotando sobre el fondo, fuente monoespaciada, cian/violeta con acento rojo.
+# Noctalia carga todos los *.toml de esta carpeta por orden alfabético: este archivo se aplica
+# después de config.toml y sobrescribe lo que repite.
+#
+# Las "imágenes flotando" son widgets sticker: pon tus imágenes o GIF en ~/Pictures/stickers/ y
+# cambia image_path (abajo) o usa el editor: noctalia msg desktop-widgets-edit (Esc para salir).
+
+[theme]
+mode           = "dark"
+source         = "custom"
+custom_palette = "Hud"            # palettes/Hud.json
+
+[shell]
+font_family = "MesloLGM Nerd Font Mono"
+
+[location]
+auto_locate = false
+address     = "San Vicente del Raspeig, Alicante, España"
+
+[weather]
+enabled = true
+unit    = "metric"
+
+[wallpaper]
+fill_mode = "crop"
+
+    [wallpaper.default]
+    path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/fondo-provisional.jpg"
+
+# Barra fina, recta y a todo lo ancho, como la de un terminal
+[bar.default]
+position             = "top"
+thickness            = 30
+margin_ends          = 0
+margin_edge          = 0
+concave_edge_corners = false
+radius               = 0
+radius_top_left      = 0
+radius_top_right     = 0
+radius_bottom_left   = 0
+radius_bottom_right  = 0
+background_opacity   = 0.88
+capsule              = false
+start                = [ "workspaces", "active_window" ]
+center               = [ "clock" ]
+end                  = [ "media", "notifications", "network", "bluetooth", "volume", "battery", "session" ]
+
+[widget.clock]
+format = "{:%H:%M:%S  //  %Y.%m.%d}"
+color  = "primary"
+
+# ---------------------------------------------------------------------------------------------
+# Widgets del escritorio. cx/cy = centro del widget en píxeles de esa pantalla.
+# HDMI-A-1 = Samsung (2560x1440). eDP-1 = portátil (1920x1080).
+# ---------------------------------------------------------------------------------------------
+[desktop_widgets]
+enabled        = true
+schema_version = 2
+widget_order   = [
+    "reloj_s", "calendario_s", "visual_s", "musica_s", "tiempo_s", "red_s",
+    "cpu_s", "ram_s", "nota_s", "sticker_s",
+    "reloj_l", "tiempo_l", "musica_l", "cpu_l", "sticker_l",
+]
+
+# --- Samsung: columna A ----------------------------------------------------------------------
+[desktop_widgets.widget.reloj_s]
+type = "clock"
+output = "HDMI-A-1"
+cx = 230.0
+cy = 140.0
+box_width = 380.0
+box_height = 150.0
+    [desktop_widgets.widget.reloj_s.settings]
+    clock_style = "digital"
+    format = "{:%H:%M}"
+    center_text = true
+    color = "primary"
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+
+[desktop_widgets.widget.calendario_s]
+type = "calendar"
+output = "HDMI-A-1"
+cx = 230.0
+cy = 410.0
+box_width = 380.0
+box_height = 320.0
+    [desktop_widgets.widget.calendario_s.settings]
+    show_events = false
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+
+[desktop_widgets.widget.visual_s]
+type = "audio_visualizer"
+output = "HDMI-A-1"
+cx = 230.0
+cy = 700.0
+box_width = 380.0
+box_height = 200.0
+    [desktop_widgets.widget.visual_s.settings]
+    bands = 48
+    mirrored = false
+    centered = false
+    show_when_idle = true
+    color_1 = "primary"
+    color_2 = "secondary"
+    background = true
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+
+# --- Samsung: columna B (música grande) ------------------------------------------------------
+[desktop_widgets.widget.musica_s]
+type = "media_player"
+output = "HDMI-A-1"
+cx = 650.0
+cy = 330.0
+box_width = 400.0
+box_height = 500.0
+    [desktop_widgets.widget.musica_s.settings]
+    layout = "vertical"
+    hide_when_no_media = false
+    color = "on_surface"
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+
+[desktop_widgets.widget.tiempo_s]
+type = "weather"
+output = "HDMI-A-1"
+cx = 650.0
+cy = 720.0
+box_width = 400.0
+box_height = 200.0
+    [desktop_widgets.widget.tiempo_s.settings]
+    show_forecast = true
+    forecast_days = 3
+    color = "on_surface"
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+
+[desktop_widgets.widget.red_s]
+type = "sysmon"
+output = "HDMI-A-1"
+cx = 650.0
+cy = 930.0
+box_width = 400.0
+box_height = 160.0
+    [desktop_widgets.widget.red_s.settings]
+    display = "graph"
+    stat = "net_rx"
+    stat2 = "net_tx"
+    color = "primary"
+    color2 = "tertiary"
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+
+# --- Samsung: columna derecha ----------------------------------------------------------------
+[desktop_widgets.widget.cpu_s]
+type = "sysmon"
+output = "HDMI-A-1"
+cx = 2310.0
+cy = 140.0
+box_width = 400.0
+box_height = 170.0
+    [desktop_widgets.widget.cpu_s.settings]
+    display = "graph"
+    stat = "cpu_usage"
+    stat2 = "cpu_temp"
+    color = "primary"
+    color2 = "tertiary"
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+
+[desktop_widgets.widget.ram_s]
+type = "sysmon"
+output = "HDMI-A-1"
+cx = 2310.0
+cy = 335.0
+box_width = 400.0
+box_height = 150.0
+    [desktop_widgets.widget.ram_s.settings]
+    display = "graph"
+    stat = "ram_pct"
+    color = "secondary"
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+
+[desktop_widgets.widget.nota_s]
+type = "label"
+output = "HDMI-A-1"
+cx = 2310.0
+cy = 500.0
+box_width = 400.0
+box_height = 110.0
+    [desktop_widgets.widget.nota_s.settings]
+    title = "SECTION 9 // NAVI-00"
+    description = "the net is vast and infinite."
+    color = "primary"
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+
+[desktop_widgets.widget.sticker_s]
+type = "sticker"
+output = "HDMI-A-1"
+cx = 2310.0
+cy = 800.0
+box_width = 400.0
+box_height = 400.0
+    [desktop_widgets.widget.sticker_s.settings]
+    image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/sticker-muestra.png"
+    opacity = 0.95
+    background = false
+
+# --- Portátil --------------------------------------------------------------------------------
+[desktop_widgets.widget.reloj_l]
+type = "clock"
+output = "eDP-1"
+cx = 200.0
+cy = 115.0
+box_width = 340.0
+box_height = 120.0
+    [desktop_widgets.widget.reloj_l.settings]
+    clock_style = "digital"
+    format = "{:%H:%M}"
+    center_text = true
+    color = "primary"
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+
+[desktop_widgets.widget.tiempo_l]
+type = "weather"
+output = "eDP-1"
+cx = 200.0
+cy = 290.0
+box_width = 340.0
+box_height = 180.0
+    [desktop_widgets.widget.tiempo_l.settings]
+    show_forecast = true
+    forecast_days = 2
+    color = "on_surface"
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+
+[desktop_widgets.widget.musica_l]
+type = "media_player"
+output = "eDP-1"
+cx = 200.0
+cy = 610.0
+box_width = 340.0
+box_height = 420.0
+    [desktop_widgets.widget.musica_l.settings]
+    layout = "vertical"
+    hide_when_no_media = true
+    color = "on_surface"
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+
+[desktop_widgets.widget.cpu_l]
+type = "sysmon"
+output = "eDP-1"
+cx = 1730.0
+cy = 115.0
+box_width = 320.0
+box_height = 140.0
+    [desktop_widgets.widget.cpu_l.settings]
+    display = "graph"
+    stat = "cpu_usage"
+    stat2 = "ram_pct"
+    color = "primary"
+    color2 = "secondary"
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+
+[desktop_widgets.widget.sticker_l]
+type = "sticker"
+output = "eDP-1"
+cx = 1730.0
+cy = 380.0
+box_width = 300.0
+box_height = 300.0
+    [desktop_widgets.widget.sticker_l.settings]
+    image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/sticker-muestra.png"
+    opacity = 0.95
+    background = false
