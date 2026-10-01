@@ -26,7 +26,7 @@ unit    = "metric"
 fill_mode = "crop"
 
     [wallpaper.default]
-    path = "/home/pedro/dev/projects/personal/dotfiles/assets/marco/fondo-provisional.jpg"
+    path = "/home/pedro/dev/projects/personal/dotfiles/assets/marco/fondo.jpeg"
 
 # Barra superior a todo lo ancho, pegada al borde, con las esquinas de abajo hacia dentro
 [bar.default]
