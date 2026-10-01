@@ -1,6 +1,6 @@
 # dotfiles
 
-Configuración de mi portátil con CachyOS: Hyprland + Noctalia (y lo que queda de KDE Plasma).
+Configuración de mi portátil con CachyOS: Hyprland + Noctalia.
 
 ## Cómo funciona
 
@@ -18,16 +18,15 @@ verdad viven en este repositorio.
 | `qt6ct`    | Aspecto de las apps Qt/KDE dentro de Hyprland                    |
 | `menus`    | Menú de aplicaciones para Dolphin fuera de KDE ("Abrir con")    |
 | `swash`    | Editor de capturas de pantalla                                  |
-| `al80`     | Script + servicio que cambia la distribución del YUNZII AL80 en Plasma |
-| `energia`  | Script + servicio: perfil `balanced` con cargador y `power-saver` con batería (fuera de Plasma) |
+| `energia`  | Script + servicio: perfil `balanced` con cargador y `power-saver` con batería |
 | `system`   | Archivos del sistema (keyd, udev, greetd + Noctalia Greeter). **No se enlazan con stow**: se copian con sudo |
 
 ## Instalar / enlazar
 
 ```sh
 cd ~/dev/projects/personal/dotfiles
-stow --no-folding -t ~ hypr noctalia kitty uwsm qt6ct menus swash al80 energia bin brave
-systemctl --user enable --now al80-layout.service perfil-energia.service
+stow --no-folding -t ~ hypr noctalia kitty uwsm qt6ct menus swash energia bin brave
+systemctl --user enable --now perfil-energia.service
 ```
 
 `--no-folding` enlaza archivo a archivo en vez de carpetas enteras, para que lo que las apps
