@@ -26,7 +26,7 @@ unit    = "metric"
 fill_mode = "crop"
 
     [wallpaper.default]
-    path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/fondo-provisional.jpg"
+    path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/fondo.jpeg"
 
 # Barra fina, recta y a todo lo ancho, como la de un terminal
 [bar.default]
