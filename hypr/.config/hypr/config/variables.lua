@@ -7,8 +7,10 @@ EDITOR       = "kate"
 CALCULATOR   = "kcalc"
 
 -- Monitors
-MONITOR1 = ""
-MONITOR2 = ""
+-- El Samsung se identifica por su modelo ("desc:"), así funciona igual aunque cambie el puerto
+-- (HDMI, USB-C, un dock...). Los nombres salen de: hyprctl monitors
+MONITOR1 = "desc:Samsung Electric Company LC27G5xT HK7W704168" -- Odyssey G5 27": principal, en casa
+MONITOR2 = "eDP-1"                                               -- pantalla del portátil
 MONITOR3 = ""
 PRIMARY_MONITOR = MONITOR1
 
