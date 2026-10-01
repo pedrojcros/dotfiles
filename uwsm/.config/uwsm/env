@@ -6,7 +6,7 @@ export ELECTRON_OZONE_PLATFORM_HINT=auto
 # Cursor Oreo Spark Purple (el mismo que en Plasma). No tiene versión "hyprcursor",
 # así que Hyprland usa directamente el tema XCursor.
 export XCURSOR_THEME="oreo_spark_purple_cursors"
-export XCURSOR_SIZE=40
+export XCURSOR_SIZE=64
 
 # If you have an NVIDIA GPU uncommment the following lines
 # export GBM_BACKEND=nvidia-drm # force GBM as a backend
