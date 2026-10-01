@@ -131,7 +131,7 @@ hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(noctCall .. "panel-toggle control-cen
 ---- WORKSPACES & MONITORS ----
 -------------------------------
 
--- Ir al escritorio N: Super + número (1-3 en el Samsung, 4-6 en el portátil).
+-- Ir al escritorio N: Super + número (1-4 en el Samsung, 5-7 en el portátil).
 -- Para cambiar de pantalla: Super + flechas (al llegar al borde salta a la otra).
 for i = 1, NUM_WORKSPACES do
     hl.bind(mainMod .. " + " .. digitCode(i % 10), hl.dsp.focus({ workspace = i }))
