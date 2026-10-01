@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# perfil-energia: cambia el perfil de power-profiles-daemon según el cargador (lo que hacía PowerDevil en Plasma).
+#   Con cargador (normal o USB-C) -> balanced
+#   Con batería                  -> power-saver
+# Solo actúa al enchufar o desenchufar, así que un cambio manual desde Noctalia se respeta.
+# Lo arranca el servicio de usuario perfil-energia.service:
+#   systemctl --user status perfil-energia      journalctl --user -u perfil-energia
+
+set -u
+
+PROFILE_AC='balanced'
+PROFILE_BATTERY='power-saver'
+
+state() {
+    local supply
+    for supply in /sys/class/power_supply/*; do
+        case "$(cat "$supply/type" 2>/dev/null)" in
+            Mains|USB)
+                if [[ "$(cat "$supply/online" 2>/dev/null)" == 1 ]]; then
+                    echo ac
+                    return
+                fi
+                ;;
+        esac
+    done
+    echo battery
+}
+
+apply() {  # $1 = ac | battery
+    local profile=$PROFILE_BATTERY
+    [[ $1 == ac ]] && profile=$PROFILE_AC
+    powerprofilesctl set "$profile" && echo "$1 -> $profile"
+}
+
+last=$(state)
+apply "$last"
+
+# udevadm monitor escribe una línea por cada evento de power_supply (cargador, batería...).
+# Tras cada una miramos si hay cargador y solo cambiamos si ha cambiado.
+stdbuf -oL udevadm monitor --udev --subsystem-match=power_supply | while read -r _; do
+    now=$(state)
+    if [[ $now != "$last" ]] && apply "$now"; then
+        last=$now
+    fi
+done

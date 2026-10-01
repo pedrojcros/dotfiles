@@ -1,0 +1,13 @@
+[Unit]
+Description=Perfil de energía según el cargador (balanced con cargador, power-saver con batería)
+PartOf=graphical-session.target
+
+[Service]
+# En Plasma ya lo hace PowerDevil; esto es para Hyprland (y cuando quitemos Plasma)
+ExecCondition=/usr/bin/sh -c '[ "$$XDG_CURRENT_DESKTOP" != KDE ]'
+ExecStart=%h/.local/bin/perfil-energia
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
