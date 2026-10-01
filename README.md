@@ -20,7 +20,7 @@ verdad viven en este repositorio.
 | `swash`    | Editor de capturas de pantalla                                  |
 | `al80`     | Script + servicio que cambia la distribución del YUNZII AL80 en Plasma |
 | `energia`  | Script + servicio: perfil `balanced` con cargador y `power-saver` con batería (fuera de Plasma) |
-| `system`   | Archivos de `/etc` (keyd, SDDM, udev). **No se enlazan con stow**: se copian con sudo |
+| `system`   | Archivos del sistema (keyd, udev, greetd + Noctalia Greeter). **No se enlazan con stow**: se copian con sudo |
 
 ## Instalar / enlazar
 
@@ -37,7 +37,10 @@ Archivos del sistema:
 
 ```sh
 sudo install -Dm644 system/etc/keyd/default.conf /etc/keyd/default.conf && sudo keyd reload
-sudo install -Dm644 system/etc/sddm.conf.d/cursor.conf /etc/sddm.conf.d/cursor.conf
+sudo install -Dm644 system/etc/greetd/config.toml /etc/greetd/config.toml
+sudo install -Dm644 system/etc/pam.d/greetd /etc/pam.d/greetd
+sudo install -Dm644 -o greeter -g greeter system/var/lib/noctalia-greeter/greeter.toml /var/lib/noctalia-greeter/greeter.toml
+sudo systemctl enable greetd.service   # pantalla de inicio de sesión (Noctalia Greeter)
 sudo install -Dm644 system/etc/udev/rules.d/70-yunzii-al80.rules /etc/udev/rules.d/70-yunzii-al80.rules
 ```
 
