@@ -87,9 +87,13 @@ source = "wallpaper"
 wallpaper_scheme = "m3-tonal-spot"
 
     [theme.templates]
-    # Quitados de momento "gtk3", "gtk4" y "kcolorscheme": cambiarían también los colores
-    # de la sesión de Plasma. Se reactivan cuando quitemos KDE. ("alacritty" no está instalado.)
-    builtin_ids = [ "btop", "kitty", "qt" ]
+    # Colores de la paleta activa en las apps:
+    #   kitty, btop                -> sus propios temas
+    #   qt                         -> ~/.config/qt6ct/colors/noctalia.conf (apps Qt)
+    #   kcolorscheme               -> ~/.config/kdeglobals (apps de KDE: Dolphin, Kate...)
+    #   gtk3, gtk4                 -> noctalia.css importado en ~/.config/gtk-*/gtk.css + tema adw-gtk3
+    # (kdeglobals y gtk también los usa Plasma: allí se verán con estos colores. "alacritty" no está instalado.)
+    builtin_ids = [ "btop", "kitty", "qt", "kcolorscheme", "gtk3", "gtk4" ]
 
 [widget.clock]
 color = "secondary"
