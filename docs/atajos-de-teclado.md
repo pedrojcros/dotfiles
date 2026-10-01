@@ -42,7 +42,7 @@
 | Super + Shift + Alt + 1…7 | Mandar la ventana (te quedas) |
 | Super + Ctrl + ← / → | Escritorio anterior / siguiente |
 | Super + Ctrl + ↓ | Escritorio vacío ("ver el escritorio") |
-| Super + S · Super + Shift + S | Escritorio especial: mostrar · mandar ventana |
+| Super + S · Super + Alt + S | Escritorio especial: mostrar · mandar ventana |
 
 ## Noctalia
 | Atajo | Qué hace |
@@ -53,7 +53,8 @@
 | Super + Z | Ajustes |
 | Super + Shift + W | Fondos de pantalla |
 | Super + . | Emojis |
-| Impr Pant · Super + Impr Pant | Captura de zona · de pantalla |
+| Super + Shift + S o Impr Pant | Captura de una zona |
+| Super + Impr Pant | Captura de pantalla completa |
 | Super + P | Cuentagotas de color |
 
 ## Touchpad
