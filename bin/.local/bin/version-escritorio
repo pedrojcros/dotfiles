@@ -10,7 +10,7 @@
 set -euo pipefail
 
 REPO="$HOME/dev/projects/personal/dotfiles"
-PACKAGES=(hypr noctalia kitty uwsm qt6ct menus swash energia bin brave)
+PACKAGES=(hypr noctalia kitty uwsm qt6ct menus energia bin brave)
 
 SETTINGS="${XDG_STATE_HOME:-$HOME/.local/state}/noctalia/settings.toml"
 
@@ -48,6 +48,23 @@ reiniciar_noctalia() {
     fi
 }
 
+# Si una app ha sustituido alguno de nuestros enlaces por un archivo normal (algunas lo hacen al
+# guardar sus ajustes), stow se niega a enlazar. Esos archivos se apartan con copia para poder seguir.
+apartar_conflictos() {
+    local pkg f rel apartados=""
+    for pkg in "${PACKAGES[@]}"; do
+        while IFS= read -r -d '' f; do
+            rel=${f#"$pkg"/}
+            if [[ -e "$HOME/$rel" && ! -L "$HOME/$rel" ]]; then
+                apartados=${apartados:-$HOME/.local/state/version-escritorio/apartados/$(date +%Y%m%d-%H%M%S)}
+                mkdir -p "$apartados/$(dirname "$rel")"
+                mv "$HOME/$rel" "$apartados/$rel"
+                echo "Apartado ~/$rel (lo había reescrito una app). Copia en $apartados"
+            fi
+        done < <(find "$pkg" -type f -print0)
+    done
+}
+
 main() {
     cd "$REPO"
 
@@ -74,6 +91,7 @@ main() {
     # en ella quedarían como enlaces rotos), cambiar de rama y enlazar la nueva.
     stow --no-folding -D -t "$HOME" "${PACKAGES[@]}"
     git switch "$1"
+    apartar_conflictos
     stow --no-folding -t "$HOME" "${PACKAGES[@]}"
 
     hyprctl reload >/dev/null

@@ -17,7 +17,6 @@ verdad viven en este repositorio.
 | `uwsm`     | Variables de entorno de la sesión (cursor, Qt, navegador...)    |
 | `qt6ct`    | Aspecto de las apps Qt/KDE dentro de Hyprland                    |
 | `menus`    | Menú de aplicaciones para Dolphin fuera de KDE ("Abrir con")    |
-| `swash`    | Editor de capturas de pantalla                                  |
 | `energia`  | Script + servicio: perfil `balanced` con cargador y `power-saver` con batería |
 | `system`   | Archivos del sistema (keyd, udev, greetd + Noctalia Greeter). **No se enlazan con stow**: se copian con sudo |
 
@@ -25,7 +24,7 @@ verdad viven en este repositorio.
 
 ```sh
 cd ~/dev/projects/personal/dotfiles
-stow --no-folding -t ~ hypr noctalia kitty uwsm qt6ct menus swash energia bin brave
+stow --no-folding -t ~ hypr noctalia kitty uwsm qt6ct menus energia bin brave
 systemctl --user enable --now perfil-energia.service
 ```
 
