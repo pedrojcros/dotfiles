@@ -8,6 +8,7 @@ hl.monitor({
     mode      = "2560x1440@144",
     position  = "0x0",
     scale     = 1,
+    reserved_area = { left = 320 }, -- versión "marco": la columna del marco (las ventanas no la tapan)
 })
 
 -- Portátil: a la derecha del Samsung y alineado con él por abajo (y = 1440 - 1080 = 360).
@@ -17,6 +18,7 @@ hl.monitor({
     mode      = "preferred",
     position  = "2560x360",
     scale     = 1, -- igual que en Plasma ("auto" elegía 1.5)
+    reserved_area = { left = 260 }, -- versión "marco": la columna del marco
 })
 
 -- Cualquier otra pantalla (proyector de clase, una TV...): resolución recomendada, a la derecha.
