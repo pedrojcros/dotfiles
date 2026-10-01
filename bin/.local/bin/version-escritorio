@@ -10,7 +10,7 @@
 set -euo pipefail
 
 REPO="$HOME/dev/projects/personal/dotfiles"
-PACKAGES=(hypr noctalia kitty uwsm qt6ct menus swash al80 energia bin brave)
+PACKAGES=(hypr noctalia kitty uwsm qt6ct menus swash energia bin brave)
 
 SETTINGS="${XDG_STATE_HOME:-$HOME/.local/state}/noctalia/settings.toml"
 
