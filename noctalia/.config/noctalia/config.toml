@@ -159,3 +159,9 @@ action = "screen_off"
 [idle.behavior.suspend]
 timeout = 1200                  # 20 min: bloquear y suspender
 action = "lock_and_suspend"
+
+# Sin widgets de escritorio por defecto. Cada versión (rama) los activa en su version.toml;
+# esto hace que al volver a una versión sin widgets desaparezcan los de la anterior.
+[desktop_widgets]
+enabled      = false
+widget_order = [ ]
