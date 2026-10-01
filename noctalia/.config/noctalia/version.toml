@@ -216,7 +216,7 @@ cy = 800.0
 box_width = 400.0
 box_height = 400.0
     [desktop_widgets.widget.sticker_s.settings]
-    image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/sticker-muestra.png"
+    image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/sticker.jpeg"
     opacity = 0.95
     background = false
 
@@ -292,6 +292,6 @@ cy = 380.0
 box_width = 300.0
 box_height = 300.0
     [desktop_widgets.widget.sticker_l.settings]
-    image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/sticker-muestra.png"
+    image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/sticker.jpeg"
     opacity = 0.95
     background = false
