@@ -165,3 +165,8 @@ action = "lock_and_suspend"
 [desktop_widgets]
 enabled      = false
 widget_order = [ ]
+
+# Fondo por defecto (cada versión pone el suyo en su version.toml). Si eliges otro desde el panel
+# de fondos se guarda en ~/.local/state/noctalia/settings.toml; version-escritorio lo borra al cambiar.
+[wallpaper.default]
+path = "/usr/share/noctalia/assets/noctalia-wallpaper.png"
