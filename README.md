@@ -26,7 +26,7 @@ verdad viven en este repositorio.
 
 ```sh
 cd ~/dev/projects/personal/dotfiles
-stow --no-folding -t ~ hypr noctalia kitty uwsm qt6ct menus swash al80 energia
+stow --no-folding -t ~ hypr noctalia kitty uwsm qt6ct menus swash al80 energia bin
 systemctl --user enable --now al80-layout.service perfil-energia.service
 ```
 

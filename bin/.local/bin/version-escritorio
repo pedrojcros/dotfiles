@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# version-escritorio: cambia entre las versiones del escritorio (ramas del repositorio dotfiles).
+#   version-escritorio            -> lista las versiones y marca la actual
+#   version-escritorio <versión>  -> cambia a esa versión y la aplica al momento
+# Cada rama tiene en la raíz un version.env con el fondo de pantalla de esa versión.
+
+set -euo pipefail
+
+REPO="$HOME/dev/projects/personal/dotfiles"
+PACKAGES=(hypr noctalia kitty uwsm qt6ct menus swash al80 energia bin)
+
+cd "$REPO"
+
+if [[ $# -eq 0 ]]; then
+    echo "Versiones (la actual va marcada con *):"
+    git branch
+    exit 0
+fi
+
+if [[ -n "$(git status --porcelain)" ]]; then
+    echo "Hay cambios sin guardar en $REPO:"
+    git status --short
+    echo "Guárdalos (git add -A && git commit -m \"...\") o apártalos (git stash) antes de cambiar."
+    exit 1
+fi
+
+git switch "$1"
+
+# Volver a enlazar: añade los archivos nuevos de esta versión y quita los que ya no existen
+stow --no-folding -R -t "$HOME" "${PACKAGES[@]}"
+
+hyprctl reload >/dev/null
+noctalia msg config-reload >/dev/null
+
+if [[ -f version.env ]]; then
+    # shellcheck source=/dev/null
+    source version.env
+    [[ -n "${WALLPAPER:-}" ]] && noctalia msg wallpaper-set "$WALLPAPER" >/dev/null
+fi
+
+echo "Versión '$1' aplicada."
