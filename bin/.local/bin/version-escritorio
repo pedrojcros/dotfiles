@@ -26,6 +26,25 @@ quitar_ajustes_guardados() {
     ' "$SETTINGS.bak" > "$SETTINGS"
 }
 
+# Reinicia Noctalia. Un "noctalia msg config-reload" no basta: si la versión cambia el espacio
+# reservado de las pantallas, Hyprland las reconfigura y Noctalia pierde el fondo y los widgets.
+# Se lanza a través de Hyprland, como al iniciar sesión, y se respeta si la cafeína estaba activa.
+reiniciar_noctalia() {
+    local cafeina=false inhibidores
+    inhibidores=$(systemd-inhibit --list --no-pager 2>/dev/null || true)
+    [[ $inhibidores == *Caffeine* ]] && cafeina=true
+
+    pkill -x noctalia || true
+    for _ in {1..40}; do pgrep -x noctalia >/dev/null || break; sleep 0.25; done
+
+    hyprctl dispatch 'hl.dsp.exec_cmd("noctalia")' >/dev/null
+    for _ in {1..40}; do noctalia msg wallpaper-get >/dev/null 2>&1 && break; sleep 0.25; done
+
+    if $cafeina; then
+        noctalia msg caffeine-enable >/dev/null
+    fi
+}
+
 main() {
     cd "$REPO"
 
@@ -59,7 +78,7 @@ main() {
     # Si colocaste widgets con el editor o elegiste otro fondo y quieres conservarlos, pásalos antes
     # al version.toml de la rama: aquí se borran para que manden los de la versión.
     quitar_ajustes_guardados
-    noctalia msg config-reload >/dev/null
+    reiniciar_noctalia
 
     echo "Versión '$1' aplicada."
 }
