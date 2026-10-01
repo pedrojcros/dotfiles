@@ -142,3 +142,20 @@ capsule_fill = "on_primary"
 inactive_pill_size = 1.0
 pill_scale = 0.80
 show_labels = false
+
+# Inactividad (sin tocar teclado ni ratón). Respeta la "cafeína" (inhibidor) y los vídeos.
+[idle]
+behavior_order = [ "lock", "screen-off", "suspend" ]
+pre_action_fade_seconds = 2.0   # la pantalla se oscurece 2 s antes: si mueves el ratón, se cancela
+
+[idle.behavior.lock]
+timeout = 360                   # 6 min: bloquear
+action = "lock"
+
+[idle.behavior.screen-off]
+timeout = 720                   # 12 min: apagar la pantalla (vuelve al tocar algo)
+action = "screen_off"
+
+[idle.behavior.suspend]
+timeout = 1200                  # 20 min: bloquear y suspender
+action = "lock_and_suspend"
