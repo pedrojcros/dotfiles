@@ -3,39 +3,56 @@
 #   version-escritorio            -> lista las versiones y marca la actual
 #   version-escritorio <versión>  -> cambia a esa versión y la aplica al momento
 # Cada rama tiene en la raíz un version.env con el fondo de pantalla de esa versión.
+#
+# Todo va dentro de main(): bash lee la función entera antes de ejecutarla, así que no le afecta
+# que este mismo archivo cambie al hacer git switch.
 
 set -euo pipefail
 
 REPO="$HOME/dev/projects/personal/dotfiles"
 PACKAGES=(hypr noctalia kitty uwsm qt6ct menus swash al80 energia bin)
 
-cd "$REPO"
+main() {
+    cd "$REPO"
 
-if [[ $# -eq 0 ]]; then
-    echo "Versiones (la actual va marcada con *):"
-    git branch
-    exit 0
-fi
+    if [[ $# -eq 0 ]]; then
+        echo "Versiones (la actual va marcada con *):"
+        git branch
+        return 0
+    fi
 
-if [[ -n "$(git status --porcelain)" ]]; then
-    echo "Hay cambios sin guardar en $REPO:"
-    git status --short
-    echo "Guárdalos (git add -A && git commit -m \"...\") o apártalos (git stash) antes de cambiar."
-    exit 1
-fi
+    if [[ -n "$(git status --porcelain)" ]]; then
+        echo "Hay cambios sin guardar en $REPO:"
+        git status --short
+        echo "Guárdalos (git add -A && git commit -m \"...\") antes de cambiar de versión."
+        return 1
+    fi
 
-git switch "$1"
+    if ! git rev-parse --verify --quiet "refs/heads/$1" >/dev/null; then
+        echo "No existe la versión '$1'. Las que hay:"
+        git branch
+        return 1
+    fi
 
-# Volver a enlazar: añade los archivos nuevos de esta versión y quita los que ya no existen
-stow --no-folding -R -t "$HOME" "${PACKAGES[@]}"
+    # Quitar los enlaces de la versión actual ANTES de cambiar (si no, los archivos que solo existen
+    # en ella quedarían como enlaces rotos), cambiar de rama y enlazar la nueva.
+    stow --no-folding -D -t "$HOME" "${PACKAGES[@]}"
+    git switch "$1"
+    stow --no-folding -t "$HOME" "${PACKAGES[@]}"
 
-hyprctl reload >/dev/null
-noctalia msg config-reload >/dev/null
+    hyprctl reload >/dev/null
+    noctalia msg config-reload >/dev/null
 
-if [[ -f version.env ]]; then
-    # shellcheck source=/dev/null
-    source version.env
-    [[ -n "${WALLPAPER:-}" ]] && noctalia msg wallpaper-set "$WALLPAPER" >/dev/null
-fi
+    if [[ -f version.env ]]; then
+        # shellcheck source=/dev/null
+        source version.env
+        if [[ -n "${WALLPAPER:-}" ]]; then
+            noctalia msg wallpaper-set "$WALLPAPER" >/dev/null
+        fi
+    fi
 
-echo "Versión '$1' aplicada."
+    echo "Versión '$1' aplicada."
+}
+
+main "$@"
+exit
