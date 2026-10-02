@@ -59,8 +59,8 @@ enabled        = true
 schema_version = 2
 widget_order   = [
     "reloj_s", "calendario_s", "visual_s", "musica_s", "tiempo_s", "red_s",
-    "cpu_s", "ram_s", "nota_s", "sticker_s",
-    "reloj_l", "tiempo_l", "musica_l", "cpu_l", "sticker_l",
+    "cpu_s", "ram_s", "nota_s", "sticker_s", "gif_s",
+    "reloj_l", "tiempo_l", "musica_l", "cpu_l", "sticker_l", "gif_l",
 ]
 
 # --- Samsung: columna A ----------------------------------------------------------------------
@@ -211,12 +211,25 @@ box_height = 110.0
 [desktop_widgets.widget.sticker_s]
 type = "sticker"
 output = "HDMI-A-1"
-cx = 2310.0
-cy = 800.0
-box_width = 400.0
-box_height = 400.0
+cx = 1960.0
+cy = 825.0
+box_width = 300.0
+box_height = 300.0
     [desktop_widgets.widget.sticker_s.settings]
     image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/sticker.jpeg"
+    opacity = 0.95
+    background = false
+
+# GIF animado (vertical 4:5) en la columna derecha, a la derecha de black_1
+[desktop_widgets.widget.gif_s]
+type = "sticker"
+output = "HDMI-A-1"
+cx = 2310.0
+cy = 825.0
+box_width = 360.0
+box_height = 450.0
+    [desktop_widgets.widget.gif_s.settings]
+    image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/reality_is_fake.gif"
     opacity = 0.95
     background = false
 
@@ -287,11 +300,23 @@ box_height = 140.0
 [desktop_widgets.widget.sticker_l]
 type = "sticker"
 output = "eDP-1"
-cx = 1730.0
-cy = 380.0
-box_width = 300.0
-box_height = 300.0
+cx = 1470.0
+cy = 400.0
+box_width = 220.0
+box_height = 220.0
     [desktop_widgets.widget.sticker_l.settings]
     image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/sticker.jpeg"
+    opacity = 0.95
+    background = false
+
+[desktop_widgets.widget.gif_l]
+type = "sticker"
+output = "eDP-1"
+cx = 1730.0
+cy = 400.0
+box_width = 240.0
+box_height = 300.0
+    [desktop_widgets.widget.gif_l.settings]
+    image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/reality_is_fake.gif"
     opacity = 0.95
     background = false
