@@ -211,8 +211,8 @@ box_height = 110.0
 [desktop_widgets.widget.sticker_s]
 type = "sticker"
 output = "HDMI-A-1"
-cx = 1960.0
-cy = 825.0
+cx = 650.0
+cy = 1180.0
 box_width = 300.0
 box_height = 300.0
     [desktop_widgets.widget.sticker_s.settings]
@@ -269,12 +269,12 @@ box_height = 180.0
 type = "media_player"
 output = "eDP-1"
 cx = 200.0
-cy = 610.0
+cy = 590.0
 box_width = 340.0
-box_height = 420.0
+box_height = 380.0
     [desktop_widgets.widget.musica_l.settings]
     layout = "vertical"
-    hide_when_no_media = true
+    hide_when_no_media = false
     color = "on_surface"
     background_color = "surface"
     background_opacity = 0.78
@@ -300,10 +300,10 @@ box_height = 140.0
 [desktop_widgets.widget.sticker_l]
 type = "sticker"
 output = "eDP-1"
-cx = 1470.0
-cy = 400.0
-box_width = 220.0
-box_height = 220.0
+cx = 200.0
+cy = 920.0
+box_width = 240.0
+box_height = 240.0
     [desktop_widgets.widget.sticker_l.settings]
     image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/sticker.jpeg"
     opacity = 0.95
