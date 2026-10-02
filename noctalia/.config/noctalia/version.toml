@@ -212,13 +212,17 @@ box_height = 110.0
 type = "sticker"
 output = "HDMI-A-1"
 cx = 650.0
-cy = 1180.0
-box_width = 300.0
-box_height = 300.0
+cy = 1200.0
+box_width = 400.0
+box_height = 340.0
     [desktop_widgets.widget.sticker_s.settings]
     image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/sticker.jpeg"
     opacity = 0.95
-    background = false
+    background = true
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+    background_padding = 14.0
 
 # GIF animado (vertical 4:5) en la columna derecha, a la derecha de black_1
 [desktop_widgets.widget.gif_s]
@@ -231,7 +235,11 @@ box_height = 450.0
     [desktop_widgets.widget.gif_s.settings]
     image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/reality_is_fake.gif"
     opacity = 0.95
-    background = false
+    background = true
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+    background_padding = 14.0
 
 # --- Portátil --------------------------------------------------------------------------------
 [desktop_widgets.widget.reloj_l]
@@ -301,13 +309,17 @@ box_height = 140.0
 type = "sticker"
 output = "eDP-1"
 cx = 200.0
-cy = 920.0
-box_width = 240.0
-box_height = 240.0
+cy = 930.0
+box_width = 340.0
+box_height = 260.0
     [desktop_widgets.widget.sticker_l.settings]
     image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/sticker.jpeg"
     opacity = 0.95
-    background = false
+    background = true
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+    background_padding = 14.0
 
 [desktop_widgets.widget.gif_l]
 type = "sticker"
@@ -319,4 +331,8 @@ box_height = 300.0
     [desktop_widgets.widget.gif_l.settings]
     image_path = "/home/pedro/dev/projects/personal/dotfiles/assets/hud/reality_is_fake.gif"
     opacity = 0.95
-    background = false
+    background = true
+    background_color = "surface"
+    background_opacity = 0.78
+    background_radius = 4.0
+    background_padding = 14.0
